@@ -27,8 +27,8 @@
 <h4>
 <a id="vagrant-configuration" class="anchor" href="#vagrant-configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Vagrant Configuration</h4>
 
-<pre><code>+ Provisions **six** CentOS 6.8 VMs
-+ Three node Apache Zookeeper Quorum (Replicated ZooKeeper)
+<pre><code>+ CentOS 6.8 VMs
++ Three Apache Zookeeper Quorum (Replicated ZooKeeper)
 + Three Apache Kafka Brokers 
 + JDK 8u112
 + Kafka 0.10.1.0 
@@ -75,32 +75,39 @@ rpm -qal zookeeper | less
 <tr>
 <th>Name</th>
 <th>Address</th>
+<th>Port Forward</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>zookeeper1</td>
 <td>10.30.3.2</td>
+<td></td>
 </tr>
 <tr>
 <td>zookeeper2</td>
 <td>10.30.3.3</td>
+<td></td>
 </tr>
 <tr>
 <td>zookeeper3</td>
 <td>10.30.3.4</td>
+<td></td>
 </tr>
 <tr>
 <td>broker1</td>
 <td>10.30.3.30</td>
+<td></td>
 </tr>
 <tr>
 <td>broker2</td>
 <td>10.30.3.20</td>
+<td></td>
 </tr>
 <tr>
 <td>broker3</td>
 <td>10.30.3.10</td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -128,6 +135,13 @@ This environment represents multiple VMs. The VMs are all listed
 above with their current state. For more information about a specific
 VM, run 'vagrant status NAME''.
 </code></pre>
+
+<h4>
+<a id="apache-kafka-quick-start" class="anchor" href="#apache-kafka-quick-start" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Apache Kafka Quick Start</h4>
+
+<hr>
+
+<p><a href="https://kafka.apache.org/documentation#quickstart_createtopic">Apache Kafka Quick Start</a></p>
 
       <footer class="site-footer">
         <span class="site-footer-owner"><a href="https://github.com/AlienOneSecurityLLC/vagrant-kafka">Vagrant-kafka</a> is maintained by <a href="https://github.com/AlienOneSecurityLLC">AlienOneSecurityLLC</a>.</span>
