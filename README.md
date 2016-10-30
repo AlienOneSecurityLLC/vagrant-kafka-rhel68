@@ -1,3 +1,5 @@
+![](https://github.com/AlienOneSecurityLLC/vagrant-kafka/blob/master/images/Kafka-Zookeeper-Pub-Sub.png)
+
 ###Vagrant Kafka/Zookeeper 
 =============
 ####Vagrant Configuration
