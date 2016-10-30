@@ -1,4 +1,4 @@
-![](https://github.com/AlienOneSecurityLLC/vagrant-kafka/blob/master/images/Kafka-Zookeeper-Pub-Sub.png)
+<img src="https://github.com/AlienOneSecurityLLC/vagrant-kafka/blob/master/images/Kafka-Zookeeper-Pub-Sub.png" alt="hi" class="inline"/>
 
 ###Vagrant Kafka/Zookeeper 
 =============
