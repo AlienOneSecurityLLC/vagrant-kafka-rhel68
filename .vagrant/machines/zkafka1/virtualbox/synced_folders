@@ -1,1 +1,1 @@
-{"virtualbox":{"/vagrant":{"guestpath":"/vagrant","hostpath":"/Users/alienone/Programming/vagrant-centos68","disabled":false,"__vagrantfile":true}}}
+{"virtualbox":{"/vagrant":{"guestpath":"/vagrant","hostpath":"/Users/alienone/Programming/vagrant-kafka","disabled":false,"__vagrantfile":true}}}

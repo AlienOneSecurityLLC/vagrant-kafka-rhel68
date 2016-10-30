@@ -14,8 +14,6 @@ Vagrant.configure("2") do |config|
     config.vm.define "zkafka#{i}" do |s|
       s.vm.hostname = "zkafka#{i}"
       s.vm.network "private_network", ip: "10.30.3.#{i+1}", netmask: "255.255.255.0", virtualbox__intnet: "my-network", drop_nat_interface_default_route: true
-      s.vm.network "forwarded_port", guest: 2181, host: 2181
-      s.vm.network "forwarded_port", guest: 9092, host: 9092
     end
   end
 
