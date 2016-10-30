@@ -33,9 +33,9 @@ rpm -qal zookeeper | less
 ####VM Mappings & IP Addresses:
 --------------------------
 
-| Name        | Address|
-|-------------|-----------|
-|zookeeper1   | 10.30.3.2 |
+| Name        | Address   | Port Forward    |
+|-------------|-----------|-----------------
+|zookeeper1   | 10.30.3.2 | 
 |zookeeper2   | 10.30.3.3 |
 |zookeeper3   | 10.30.3.4 |
 |broker1      | 10.30.3.30|
@@ -64,3 +64,6 @@ This environment represents multiple VMs. The VMs are all listed
 above with their current state. For more information about a specific
 VM, run 'vagrant status NAME''.
 ```
+####Apache Kafka Quick Start 
+---------------------------
+[Apache Kafka Quick Start](https://kafka.apache.org/documentation#quickstart_createtopic)
