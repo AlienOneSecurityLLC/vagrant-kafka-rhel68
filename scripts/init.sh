@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-#########################
-# INSTALLING ORACLE JDK 8
-#########################
+###########################
+# ORACLE JAVA JDK 8 INSTALL
+###########################
 echo "Installing Oracle Java Development Kit"
 JDK_VERSION="jdk-8u112-linux-x64"
 JDK_RPM="$JDK_VERSION.rpm"
