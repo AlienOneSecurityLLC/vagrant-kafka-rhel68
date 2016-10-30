@@ -3,8 +3,8 @@
 ###Vagrant Kafka/Zookeeper 
 =============
 ####Vagrant Configuration
-    + Provisions **six** CentOS 6.8 VMs
-    + Three node Apache Zookeeper Quorum (Replicated ZooKeeper)
+    + CentOS 6.8 VMs
+    + Three Apache Zookeeper Quorum (Replicated ZooKeeper)
     + Three Apache Kafka Brokers 
     + JDK 8u112
     + Kafka 0.10.1.0 
