@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Vagrant-kafka by AlienOneSecurityLLC</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Vagrant-kafka</h1>
+      <h2 class="project-tagline">Setup 3 Node Kafka &amp; Zookeeper VM Cluster - CentOS 6.8</h2>
+      <a href="https://github.com/AlienOneSecurityLLC/vagrant-kafka" class="btn">View on GitHub</a>
+      <a href="https://github.com/AlienOneSecurityLLC/vagrant-kafka/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/AlienOneSecurityLLC/vagrant-kafka/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h3>
+<a id="vagrant-kafkazookeeper" class="anchor" href="#vagrant-kafkazookeeper" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Vagrant Kafka/Zookeeper</h3>
+
+<h1></h1>
+
+<h4>
+<a id="vagrant-configuration" class="anchor" href="#vagrant-configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Vagrant Configuration</h4>
+
+<pre><code>+ Provisions **six** CentOS 6.8 VMs
++ Three node Apache Zookeeper Quorum (Replicated ZooKeeper)
++ Three Apache Kafka Brokers 
++ JDK 8u112
++ Kafka 0.10.1.0 
++ Scala 2.10 
++ Zookeeper 3.4.9 
+</code></pre>
+
+<h5>
+<a id="prerequisites---install-the-following-prerequisites" class="anchor" href="#prerequisites---install-the-following-prerequisites" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Prerequisites - Install the following prerequisites</h5>
+
+<hr>
+
+<ul>
+<li><a href="https://www.vagrantup.com/downloads.html">Vagrant</a></li>
+<li><a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a></li>
+</ul>
+
+<h4>
+<a id="setup" class="anchor" href="#setup" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Setup</h4>
+
+<hr>
+
+<pre><code>git clone git@github.com:AlienOneSecurityLLC/vagrant-kafka.git
+cd vagrant-kafka 
+vagrant up
+</code></pre>
+
+<h4>
+<a id="node-setup" class="anchor" href="#node-setup" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Node Setup</h4>
+
+<hr>
+
+<ul>
+<li>$KAFKA_HOME_DIR <code>$HOME/kafka_2.11-0.10.1.0/</code>
+</li>
+<li>$ZOOKEEPER_HOME_DIR <code>embedded version of Zookeeper bundled with Kafka utilized</code>
+</li>
+</ul>
+
+<h4>
+<a id="vm-mappings--ip-addresses" class="anchor" href="#vm-mappings--ip-addresses" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>VM Mappings &amp; IP Addresses:</h4>
+
+<hr>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Address</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>zookeeper1</td>
+<td>10.30.3.2</td>
+</tr>
+<tr>
+<td>zookeeper2</td>
+<td>10.30.3.3</td>
+</tr>
+<tr>
+<td>zookeeper3</td>
+<td>10.30.3.4</td>
+</tr>
+<tr>
+<td>broker1</td>
+<td>10.30.3.30</td>
+</tr>
+<tr>
+<td>broker2</td>
+<td>10.30.3.20</td>
+</tr>
+<tr>
+<td>broker3</td>
+<td>10.30.3.10</td>
+</tr>
+</tbody>
+</table>
+
+<h4>
+<a id="unit-status-test" class="anchor" href="#unit-status-test" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Unit Status Test</h4>
+
+<hr>
+
+<ul>
+<li>Test all VM nodes are in state RUNNING </li>
+</ul>
+
+<pre><code>vagrant status
+</code></pre>
+
+<pre><code>Current machine states:
+
+zookeeper1                running (virtualbox)
+zookeeper2                running (virtualbox)
+zookeeper3                running (virtualbox)
+broker1                   running (virtualbox)
+broker2                   running (virtualbox)
+broker3                   running (virtualbox)
+
+
+This environment represents multiple VMs. The VMs are all listed
+above with their current state. For more information about a specific
+VM, run 'vagrant status NAME''.
+</code></pre>
+
+<h4>
+<a id="unit-accesses-test" class="anchor" href="#unit-accesses-test" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Unit Accesses Test</h4>
+
+<hr>
+
+<ul>
+<li><p>Login to any host with e.g., <code>vagrant ssh broker1</code>. Some scripts have been included for convenience:</p></li>
+<li><p>Create a new topic <code>/vagrant/scripts/create_topic.sh &lt;topic name&gt;</code> (create as many as you see fit)</p></li>
+<li><p>Topic details can be listed with <code>/vagrant/scripts/list-topics.sh</code></p></li>
+<li><p>Start a console producer <code>/vagrant/scripts/producer.sh &lt;opic name&gt;</code>. Type few messages and seperate them with new lines (Ctl-C to exit). </p></li>
+<li><p><code>/vagrant/scripts/consumer.sh &lt;topic name&gt;</code>: this will create a console consumer, getting messages from the topic created before. It will read all the messages each time starting from the beginning.</p></li>
+<li><p>Now anything you type in producer, it will show on the consumer. </p></li>
+</ul>
+
+<h4>
+<a id="startup-of-all-vms" class="anchor" href="#startup-of-all-vms" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Startup of all VMs</h4>
+
+<hr>
+
+<p><code>for i in zookeeper{1..3} broker{1..3};do vagrant up $i;done</code></p>
+
+<h4>
+<a id="graceful-stop-of-all-vms" class="anchor" href="#graceful-stop-of-all-vms" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Graceful Stop of All VMs</h4>
+
+<hr>
+
+<p><code>for i in zookeeper{1..3} broker{1..3};do vagrant halt $i;done;</code></p>
+
+<h4>
+<a id="teardown--rebase-development--test-environment" class="anchor" href="#teardown--rebase-development--test-environment" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Teardown &amp; Rebase Development &amp; Test Environment</h4>
+
+<hr>
+
+<ul>
+<li>To destroy/delete all the VMs</li>
+</ul>
+
+<p><code>for i in zookeeper{1..3} broker{1..3};do vagrant destroy $i;done;</code></p>
+
+<h4>
+<a id="insights" class="anchor" href="#insights" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Insights</h4>
+
+<hr>
+
+<h5>
+<a id="zookeeper-zk" class="anchor" href="#zookeeper-zk" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Zookeeper (ZK)</h5>
+
+<ul>
+<li><p>Kafka is using ZK for its operation. Here are some commands you can run on any of the nodes to see some of the internal Zookeeper structures created by Kafka. </p></li>
+<li><p>Open a ZK shell:</p></li>
+</ul>
+
+<p><code>$HOME/kafka_2.11-0.10.1.0/bin/zookeeper-shell.sh 10.30.3.2:2181/</code></p>
+
+<ul>
+<li>Inspect ZK structure: </li>
+</ul>
+
+<pre><code>ls /
+[controller, controller_epoch, brokers, zookeeper, admin, isr_change_notification, consumers, config]
+</code></pre>
+
+<ul>
+<li>
+<p>Get ZK version:</p>
+
+<ul>
+<li>First we need to install <strong>nc</strong> <code>sudo yum install nc -y</code>
+</li>
+<li>
+<p>To get the version of ZK type:</p>
+
+<pre><code>echo status | nc 10.30.3.2 2181
+</code></pre>
+</li>
+<li><p>You can replace 10.30.3.2 with any ZK IP and execute the above command from any node within the cluster. </p></li>
+</ul>
+</li>
+</ul>
+
+<h5>
+<a id="kafka" class="anchor" href="#kafka" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Kafka</h5>
+
+<ul>
+<li><p>Here we will see some more ways we can ingest data into Kafa. </p></li>
+<li><p>Pipe data directly into Kafka</p></li>
+<li><p>Login to any of the 6 nodes</p></li>
+</ul>
+
+<pre><code>vagrant ssh zookeeper1
+</code></pre>
+
+<ul>
+<li>Create a topic if does not exist</li>
+</ul>
+
+<pre><code> /vagrant/scripts/create_topic.sh test-one
+</code></pre>
+
+<ul>
+<li>Send data to the Kafka topic</li>
+</ul>
+
+<pre><code>echo "Yet another line from stdin" | ./kafka_2.11-0.10.1.0/bin/kafka-console-producer.sh --topic test-one --broker-list 10.30.3.10:9092,10.30.3.20:9092,10.30.3.30:9092
+</code></pre>
+
+<ul>
+<li>You can then test that the line was added by running the consumer</li>
+</ul>
+
+<pre><code>/vagrant/scripts/consumer.sh test-one
+</code></pre>
+
+<ul>
+<li><p>Add a continues stream of data into Kafka</p></li>
+<li><p>Running <strong>vmstat</strong> will periodically export stats about the VM you are attached to. </p></li>
+</ul>
+
+<pre><code>&gt;vmstat -a 1
+
+procs -----------memory---------- ---swap-- -----io---- --system-- -----cpu-----
+ r  b   swpd   free  inact active   si   so    bi    bo   in   cs us sy id wa st
+ 0  0    960 113312 207368 130500    0    0    82   197  130  176  0  1 99  0  0
+ 0  0    960 113312 207368 130500    0    0     0     0   60   76  0  0 100  0  0
+ 0  0    960 113304 207368 130540    0    0     0     0   58   81  0  0 100  0  0
+ 0  0    960 113304 207368 130540    0    0     0     0   53   76  0  1 99  0  0
+ 0  0    960 113304 207368 130540    0    0     0     0   53   78  0  0 100  0  0
+ 0  0    960 113304 207368 130540    0    0     0    16   64   90  0  0 100  0  0
+</code></pre>
+
+<ul>
+<li>We can redirect this output into Kafka</li>
+</ul>
+
+<pre><code>vmstat -a 1 | ./kafka_2.11-0.10.1.0/bin/kafka-console-producer.sh --topic test-one --broker-list 10.30.3.10:9092,10.30.3.20:9092,10.30.3.30:9092 &amp;
+</code></pre>
+
+<ul>
+<li>While the producer runs in the background you can start the consumer to see what happens</li>
+</ul>
+
+<pre><code>/vagrant/scripts/consumer.sh test-one
+</code></pre>
+
+<ul>
+<li><p>You should be seeing the output of <strong>vmstat</strong> in the console. </p></li>
+<li><p>When you are all done, kill the consumer by <strong>ctl-C</strong> and then type <strong>fg</strong> to bring the producer in foreground and <strong>crl-C</strong> to terminate it. </p></li>
+</ul>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/AlienOneSecurityLLC/vagrant-kafka">Vagrant-kafka</a> is maintained by <a href="https://github.com/AlienOneSecurityLLC">AlienOneSecurityLLC</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
