@@ -36,6 +36,7 @@ rpm -ivh /tmp/$JDK_RPM
 # INSTALL LOGSTASH 5.0
 #######################
 echo "Installing logstash"
+rpm --import https://packages.elastic.co/GPG-KEY-elasticsearch
 rpm -ivh https://artifacts.elastic.co/downloads/logstash/logstash-5.0.0.rpm
 
 
