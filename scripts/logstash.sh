@@ -36,17 +36,7 @@ rpm -ivh /tmp/$JDK_RPM
 # INSTALL LOGSTASH 5.0
 #######################
 echo "Installing logstash"
-cd /opt
-curl -O https://artifacts.elastic.co/downloads/logstash/logstash-5.0.0.tar.gz
-gunzip < logstash-5.0.0.tar.gz | tar xvf -
-cd /etc/init.d
-wget https://raw.githubusercontent.com/AlienOneSecurityLLC/vagrant-logstash/master/config/logstash
-chmod +x logstash
-chkconfig logstash on
-mkdir -p /etc/logstash/conf.d
-cd /etc/logstash/conf.d
-wget https://raw.githubusercontent.com/AlienOneSecurityLLC/vagrant-logstash/master/config/logstash.conf
-service logstash start
+rpm -ivh https://artifacts.elastic.co/downloads/logstash/logstash-5.0.0.rpm
 
 
 #######################
