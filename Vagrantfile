@@ -26,8 +26,7 @@ Vagrant.configure("2") do |config|
       s.vm.provision "shell", path: "scripts/logstash.sh", privileged: true
     end
   end
-
-
+  
   # Connector Instance => 1 Instance Spawned
   (1..1).each do |i|
     config.vm.define "logstash1" do |s|
