@@ -57,6 +57,8 @@ Current machine states:
 zkafka1                running (virtualbox)
 zkafka2                running (virtualbox)
 zkafka3                running (virtualbox)
+logstash1              running (virtualbox)
+connector1             running (virtualbox)
 
 
 This environment represents multiple VMs. The VMs are all listed
