@@ -18,16 +18,25 @@ Vagrant.configure("2") do |config|
   end
 
   # Logstash Instance => 1 Instance Spawned
-  config.vm.define "logstash1"
-  config.vm.hostname = "logstash1"
-  config.vm.network "private_network", ip: "10.30.3.5", netmask: "255.255.255.0", virtualbox__intnet: "my-network", drop_nat_interface_default_route: true
-  config.vm.provision "shell", path: "scripts/logstash.sh", privileged: true
+  (1..1).each do |i|
+    config.vm.define "logstash1" do |s|
+      s.vm.define "logstash1"
+      s.vm.hostname = "logstash1"
+      s.vm.network "private_network", ip: "10.30.3.5", netmask: "255.255.255.0", virtualbox__intnet: "my-network", drop_nat_interface_default_route: true
+      s.vm.provision "shell", path: "scripts/logstash.sh", privileged: true
+    end
+  end
+
 
   # Connector Instance => 1 Instance Spawned
-  config.vm.define "connector1"
-  config.vm.hostname = "connector1"
-  config.vm.network "private_network", ip: "10.30.3.6", netmask: "255.255.255.0", virtualbox__intnet: "my-network", drop_nat_interface_default_route: true
-  config.vm.provision "shell", path: "scripts/connector.sh", privileged: true
+  (1..1).each do |i|
+    config.vm.define "logstash1" do |s|
+      s.vm.define "connector1"
+      s.vm.hostname = "connector1"
+      s.vm.network "private_network", ip: "10.30.3.6", netmask: "255.255.255.0", virtualbox__intnet: "my-network", drop_nat_interface_default_route: true
+      s.vm.provision "shell", path: "scripts/connector.sh", privileged: true
+    end
+  end
 
 # Global
   config.vm.provider "virtualbox" do |v|
