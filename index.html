@@ -75,39 +75,28 @@ rpm -qal zookeeper | less
 <tr>
 <th>Name</th>
 <th>Address</th>
-<th>Port Forward</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>zookeeper1</td>
+<td>zkafka1</td>
 <td>10.30.3.2</td>
-<td></td>
 </tr>
 <tr>
-<td>zookeeper2</td>
+<td>zkafka2</td>
 <td>10.30.3.3</td>
-<td></td>
 </tr>
 <tr>
-<td>zookeeper3</td>
+<td>zkafka3</td>
 <td>10.30.3.4</td>
-<td></td>
 </tr>
 <tr>
-<td>broker1</td>
-<td>10.30.3.30</td>
-<td></td>
+<td>logstash1</td>
+<td>10.30.3.5</td>
 </tr>
 <tr>
-<td>broker2</td>
-<td>10.30.3.20</td>
-<td></td>
-</tr>
-<tr>
-<td>broker3</td>
-<td>10.30.3.10</td>
-<td></td>
+<td>connector1</td>
+<td>10.30.3.6</td>
 </tr>
 </tbody>
 </table>
@@ -129,6 +118,8 @@ rpm -qal zookeeper | less
 zkafka1                running (virtualbox)
 zkafka2                running (virtualbox)
 zkafka3                running (virtualbox)
+logstash1              running (virtualbox)
+connector1             running (virtualbox)
 
 
 This environment represents multiple VMs. The VMs are all listed
