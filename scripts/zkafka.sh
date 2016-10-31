@@ -83,9 +83,9 @@ mkdir -p /opt/kafka-logs-1
 sed -i "s/log.dirs\=\/tmp\/kafka-logs/log.dirs\=\/opt\/kafka-logs-1/g" /opt/kafka/config/server.properties
 sed -i "s/num.partitions\=1/num.partitions\=3/g" /opt/kafka/config/server.properties
 sed -i "s/zookeeper.connect\=localhost\:2181/zookeeper.connect\=localhost\:2181,10.30.3.2\:2181,10.30.3.3\:2181,10.30.3.4\:2181/g" /opt/kafka/config/server.properties
+chkconfig kafka on
 chown -R kafka:kafka /opt/kafka-logs-1
 chown -R kafka:kafka /opt/kafka
-chkconfig kafka on
 service kafka start
 sed -i "s/XmlIpcRegSvc    9092\/tcp                \# Xml-Ipc Server Reg/kafka    9092\/tcp                \# Kafka/g" /etc/services
 lsof -i TCP:9092 | grep LISTEN
