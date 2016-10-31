@@ -33,14 +33,13 @@ rpm -qal zookeeper | less
 ####VM Mappings & IP Addresses:
 --------------------------
 
-| Name        | Address   | Port Forward    |
-|-------------|-----------|-----------------
-|zookeeper1   | 10.30.3.2 | 
-|zookeeper2   | 10.30.3.3 |
-|zookeeper3   | 10.30.3.4 |
-|broker1      | 10.30.3.30|
-|broker2      | 10.30.3.20|
-|broker3      | 10.30.3.10|
+| Name        | Address   | 
+|-------------|-----------|
+|zkafka1      | 10.30.3.2 | 
+|zkafka2      | 10.30.3.3 |
+|zkafka3      | 10.30.3.4 |
+|logstash1    | 10.30.3.5 |
+|connector1   | 10.30.3.6 |
 
 
 ####Unit Status Test 
