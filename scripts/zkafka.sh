@@ -1,5 +1,18 @@
 #!/usr/bin/env bash
 
+
+#title           :logstash.sh
+#description     :Vagrant shell script install Zookeeper & Kafka
+#author		     :Justin Jessup
+#date            :10/30/2016
+#version         :0.1
+#usage		     :bash logstash.sh
+#notes           :Executed via Vagrant => vagrant-kafka
+#bash_version    :GNU bash, version 4.1.2(1)-release (x86_64-redhat-linux-gnu)
+#License         :MIT
+#==============================================================================
+
+
 ###########################
 # ORACLE JAVA JDK 8 INSTALL
 ###########################
@@ -15,6 +28,7 @@ fi
 
 echo "Disabling iptables"
 /etc/init.d/iptables stop
+/sbin/chkconfig iptables off
 
 echo "Installing JDK Version: $JDK_VERSION"
 rpm -ivh /tmp/$JDK_RPM
