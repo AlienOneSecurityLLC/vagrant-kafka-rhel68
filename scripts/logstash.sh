@@ -36,17 +36,17 @@ rpm -ivh /tmp/$JDK_RPM
 # INSTALL LOGSTASH 5.0
 #######################
 echo "Installing logstash"
+
 rpm --import https://packages.elastic.co/GPG-KEY-elasticsearch
-rpm -ivh https://artifacts.elastic.co/downloads/logstash/logstash-5.0.0.rpm
+cp /vagrant/config/logstash.repo /etc/yum.repos.d
 mkdir -p /opt/logstash
 cp /vagrant/config/logstash.conf /opt/logstash
-sed -i "s/path.data\: \/var\/lib\/logstash/path.data\: \/opt\/logstash/g" /etc/logstash/logstash.yml
 echo "Installation logstash completed"
 echo "Installing logstash plugins - logstash-input-kafka, logstash-output-syslog, logstash-codec-cef, and logstash-codec-avro"
-/usr/share/logstash/bin/./logstash-plugin install logstash-input-kafka
-/usr/share/logstash/bin/./logstash-plugin install logstash-output-syslog
-/usr/share/logstash/bin/./logstash-plugin install logstash-codec-cef
-/usr/share/logstash/bin/./logstash-plugin install logstash-codec-avro
+/opt/logstash/bin/./logstash-plugin install logstash-input-kafka
+/opt/logstash/bin/./logstash-plugin install logstash-output-syslog
+/opt/logstash/bin/./logstash-plugin install logstash-codec-cef
+/opt/logstash/bin/./logstash-plugin install logstash-codec-avro
 echo "Logstash plugins installation completed"
 chown -R logstash:logstash /opt/logstash
 
