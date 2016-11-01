@@ -78,10 +78,11 @@ str=$(hostname)
 last_char="${str: -1}"
 sed -i "s/broker.id\=0/broker.id\=$last_char/g" /opt/kafka/config/server.properties
 ip_address=$(ifconfig -a eth1 | grep 'inet addr\:' | cut -d':' -f2 | awk '{print $1}')
-sed -i "s/\#listeners\=PLAINTEXT\:\/\/\:9092/listeners\=PLAINTEXT\:\/\/$ip_address:9092/g" /opt/kafka/config/server.properties
+sed -i "s/\#advertised.listeners\=PLAINTEXT\:\/\/your.host.name:9092/advertised.listeners\=PLAINTEXT\:\/\/$ip_address:9092/g" /opt/kafka/config/server.properties
 mkdir -p /opt/kafka-logs-1
 sed -i "s/log.dirs\=\/tmp\/kafka-logs/log.dirs\=\/opt\/kafka-logs-1/g" /opt/kafka/config/server.properties
 sed -i "s/num.partitions\=1/num.partitions\=3/g" /opt/kafka/config/server.properties
+sed -i "s/\#delete.topic.enable\=true/delete.topic.enable\=true/g" /opt/kafka/config/server.properties
 sed -i "s/zookeeper.connect\=localhost\:2181/zookeeper.connect\=localhost\:2181,10.30.3.2\:2181,10.30.3.3\:2181,10.30.3.4\:2181/g" /opt/kafka/config/server.properties
 chkconfig kafka on
 chown -R kafka:kafka /opt/kafka-logs-1
