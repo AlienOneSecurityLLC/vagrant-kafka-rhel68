@@ -36,7 +36,6 @@ rpm -ivh /tmp/$JDK_RPM
 # INSTALL LOGSTASH 5.0
 #######################
 echo "Installing logstash"
-
 rpm --import https://packages.elastic.co/GPG-KEY-elasticsearch
 cp /vagrant/config/logstash.repo /etc/yum.repos.d
 mkdir -p /opt/logstash
