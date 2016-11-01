@@ -48,7 +48,8 @@ echo "Installing logstash plugins - logstash-input-kafka, logstash-output-syslog
 /opt/logstash/bin/./logstash-plugin install logstash-codec-avro
 echo "Logstash plugins installation completed"
 chown -R logstash:logstash /opt/logstash
-
+/sbin/chkconfig logstash on
+/sbin/service logstash start
 #######################
 # CENTOS 6.8 UPDATE
 #######################
