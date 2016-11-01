@@ -39,7 +39,7 @@ echo "Installing logstash"
 rpm --import https://packages.elastic.co/GPG-KEY-elasticsearch
 cp /vagrant/config/logstash.repo /etc/yum.repos.d
 mkdir -p /opt/logstash
-cp /vagrant/config/logstash.conf /opt/logstash
+cp /vagrant/config/logstash.conf /etc/logstash/conf.d
 echo "Installation logstash completed"
 echo "Installing logstash plugins - logstash-input-kafka, logstash-output-syslog, logstash-codec-cef, and logstash-codec-avro"
 /opt/logstash/bin/./logstash-plugin install logstash-input-kafka
