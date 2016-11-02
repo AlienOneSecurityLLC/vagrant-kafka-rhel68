@@ -46,6 +46,7 @@ echo "Installing logstash plugins - logstash-input-kafka, logstash-output-syslog
 /opt/logstash/bin/./logstash-plugin install logstash-output-syslog
 /opt/logstash/bin/./logstash-plugin install logstash-codec-cef
 /opt/logstash/bin/./logstash-plugin install logstash-codec-avro
+/opt/logstash/bin/./logstash-plugin update all 
 echo "Logstash plugins installation completed"
 chown -R logstash:logstash /opt/logstash
 /sbin/chkconfig logstash on
