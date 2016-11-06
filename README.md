@@ -13,7 +13,7 @@
     + Kafka 0.10.1.0 
     + Scala 2.10 
     + Zookeeper 3.4.9 
-    + One Logstash 5.0 Node 
+    + One Logstash 4.0 Node 
     + One ArcSight Smart Connector 7.3.0.7886.0 Node 
 
 #####Prerequisites - Install the following prerequisites 
